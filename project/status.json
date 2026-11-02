@@ -1,0 +1,287 @@
+{
+  "project": "riskpath (schedule-risk-montecarlo)",
+  "date": "2026-11-02",
+  "health": {
+    "rag": "AMBER",
+    "reason": "no overdue milestones or open P0 items, but open risk(s) scoring >= 15: R1 (score 16)"
+  },
+  "executive_summary": "Overall health is AMBER: no overdue milestones or open P0 items, but open risk(s) scoring >= 15: R1 (score 16). 4 of 8 milestones are complete. Deterministic CPM finish is 170 working days (2027-09-02), but only 7.8% of 10,000 simulated runs finish that early. Recommended schedule margin is 42 working days (24.2% of the deterministic plan), committing to 2027-11-02. The highest-scored open risk is R1 (score 16, High); mitigation: Ship estimate-quality checks (B12), document how to elicit ranges, prefer ranges calibrated on actuals. Next actions: B10 Push repo and enable the weekly AI PM workflow; B12 Estimate-quality checks on three-point ranges; B13 MSPDI (MS Project XML) task and predecessor parser.",
+  "executive_summary_source": "deterministic template",
+  "milestones": [
+    {
+      "id": "M1",
+      "name": "CPM engine",
+      "due": "2026-09-18",
+      "status": "done",
+      "pct_done": 100.0,
+      "items_done": 2,
+      "items_total": 2,
+      "overdue": false,
+      "days_overdue": 0,
+      "done_criteria": [
+        "Forward and backward pass with total float",
+        "Cycle and unknown-dependency detection",
+        "Hand-computed 4-task network test passes"
+      ]
+    },
+    {
+      "id": "M2",
+      "name": "Monte Carlo engine",
+      "due": "2026-10-02",
+      "status": "done",
+      "pct_done": 100.0,
+      "items_done": 2,
+      "items_total": 2,
+      "overdue": false,
+      "days_overdue": 0,
+      "done_criteria": [
+        "PERT-beta sampler (lambda = 4) matches analytic mean",
+        "Vectorised per-iteration CPM over 10,000 iterations in well under 60 s",
+        "Criticality index per task",
+        "Percentile convergence test passes"
+      ]
+    },
+    {
+      "id": "M3",
+      "name": "Correlation and risk events",
+      "due": "2026-10-16",
+      "status": "done",
+      "pct_done": 100.0,
+      "items_done": 2,
+      "items_total": 2,
+      "overdue": false,
+      "days_overdue": 0,
+      "done_criteria": [
+        "Gaussian copula with configurable rho",
+        "Discrete risk events (probability x days)",
+        "Tests show correlation widens the spread"
+      ]
+    },
+    {
+      "id": "M4",
+      "name": "Reporting and charts",
+      "due": "2026-10-30",
+      "status": "done",
+      "pct_done": 100.0,
+      "items_done": 2,
+      "items_total": 2,
+      "overdue": false,
+      "days_overdue": 0,
+      "done_criteria": [
+        "S-curve, histogram, tornado, criticality and Gantt charts in the brand style",
+        "reports/schedule_risk_report.md and reports/summary.json"
+      ]
+    },
+    {
+      "id": "M5",
+      "name": "AI PM and CI automation",
+      "due": "2026-11-13",
+      "status": "in_progress",
+      "pct_done": 33.3,
+      "items_done": 1,
+      "items_total": 3,
+      "overdue": false,
+      "days_overdue": 0,
+      "done_criteria": [
+        "Deterministic STATUS.md and status.json",
+        "CI on Python 3.10 and 3.12",
+        "Weekly AI PM workflow committing status updates"
+      ]
+    },
+    {
+      "id": "M6",
+      "name": "Estimate-quality guardrails",
+      "due": "2026-12-11",
+      "status": "planned",
+      "pct_done": 0.0,
+      "items_done": 0,
+      "items_total": 1,
+      "overdue": false,
+      "days_overdue": 0,
+      "done_criteria": [
+        "Flag implausible ranges (pessimistic / optimistic ratio, zero-width ranges)",
+        "Warn when most-likely sits at a range boundary"
+      ]
+    },
+    {
+      "id": "M7",
+      "name": "MS Project XML import",
+      "due": "2027-01-29",
+      "status": "planned",
+      "pct_done": 0.0,
+      "items_done": 0,
+      "items_total": 3,
+      "overdue": false,
+      "days_overdue": 0,
+      "done_criteria": [
+        "Parse MSPDI tasks, durations and predecessors",
+        "Support FS/SS/FF/SF links with lags",
+        "Round-trip test on a synthetic MSPDI file"
+      ]
+    },
+    {
+      "id": "M8",
+      "name": "Web UI",
+      "due": "2027-03-26",
+      "status": "planned",
+      "pct_done": 0.0,
+      "items_done": 0,
+      "items_total": 2,
+      "overdue": false,
+      "days_overdue": 0,
+      "done_criteria": [
+        "Upload a plan and view the S-curve and criticality charts",
+        "Compare scenarios (rho, target date) side by side"
+      ]
+    }
+  ],
+  "next_actions": [
+    {
+      "id": "B10",
+      "title": "Push repo and enable the weekly AI PM workflow",
+      "priority": "P1",
+      "owner": "Lauren",
+      "depends_on": [
+        "B09"
+      ],
+      "milestone": "M5"
+    },
+    {
+      "id": "B12",
+      "title": "Estimate-quality checks on three-point ranges",
+      "priority": "P1",
+      "owner": "AI PM",
+      "depends_on": [
+        "B03"
+      ],
+      "milestone": "M6"
+    },
+    {
+      "id": "B13",
+      "title": "MSPDI (MS Project XML) task and predecessor parser",
+      "priority": "P1",
+      "owner": "Lauren",
+      "depends_on": [
+        "B02"
+      ],
+      "milestone": "M7"
+    }
+  ],
+  "blocked": [
+    {
+      "id": "B11",
+      "title": "Add ANTHROPIC_API_KEY secret for the narrative summary",
+      "waiting_on": [
+        "B10"
+      ]
+    },
+    {
+      "id": "B14",
+      "title": "Map FS/SS/FF/SF link types and lags into the CPM engine",
+      "waiting_on": [
+        "B13"
+      ]
+    },
+    {
+      "id": "B15",
+      "title": "Import project calendars and holidays from MSPDI",
+      "waiting_on": [
+        "B13"
+      ]
+    },
+    {
+      "id": "B17",
+      "title": "Web UI: scenario comparison (rho, target date)",
+      "waiting_on": [
+        "B16"
+      ]
+    }
+  ],
+  "risks": [
+    {
+      "id": "R1",
+      "risk": "Garbage-in estimates: three-point ranges are guessed or anchored, so precise-looking outputs rest on weak inputs",
+      "probability": 4,
+      "impact": 4,
+      "owner": "Lauren",
+      "mitigation": "Ship estimate-quality checks (B12), document how to elicit ranges, prefer ranges calibrated on actuals",
+      "status": "open",
+      "score": 16,
+      "heat": "High"
+    },
+    {
+      "id": "R2",
+      "risk": "Merge bias misunderstood: stakeholders read P50 later than the CPM date as a modelling error",
+      "probability": 3,
+      "impact": 4,
+      "owner": "Lauren",
+      "mitigation": "Report shows the merge-bias gap explicitly and explains why converging paths push the mean out",
+      "status": "open",
+      "score": 12,
+      "heat": "Medium"
+    },
+    {
+      "id": "R3",
+      "risk": "Stakeholder anchoring on the deterministic date instead of the P80 commitment",
+      "probability": 4,
+      "impact": 3,
+      "owner": "Lauren",
+      "mitigation": "Lead the report with the probability of the deterministic date and the P80 commit date",
+      "status": "open",
+      "score": 12,
+      "heat": "Medium"
+    },
+    {
+      "id": "R4",
+      "risk": "Correlation misspecified: one global rho over- or understates spread",
+      "probability": 3,
+      "impact": 3,
+      "owner": "AI PM",
+      "mitigation": "Report rho=0 vs configured rho side by side; per-group correlation on the backlog",
+      "status": "open",
+      "score": 9,
+      "heat": "Medium"
+    },
+    {
+      "id": "R5",
+      "risk": "False precision: 10,000 iterations read as certainty",
+      "probability": 2,
+      "impact": 3,
+      "owner": "AI PM",
+      "mitigation": "Convergence test in CI; dates reported to the whole working day",
+      "status": "open",
+      "score": 6,
+      "heat": "Low"
+    },
+    {
+      "id": "R6",
+      "risk": "Calendar errors (holidays, weekends) shift finish dates",
+      "probability": 2,
+      "impact": 3,
+      "owner": "Lauren",
+      "mitigation": "Working-day calendar unit tests; holidays explicit in config",
+      "status": "open",
+      "score": 6,
+      "heat": "Low"
+    },
+    {
+      "id": "R7",
+      "risk": "MS Project XML import grows in scope (resources, constraints, calendars)",
+      "probability": 3,
+      "impact": 2,
+      "owner": "Lauren",
+      "mitigation": "Limit M7 to tasks, durations, links and lags; defer resources",
+      "status": "open",
+      "score": 6,
+      "heat": "Low"
+    }
+  ],
+  "data": [
+    "Deterministic CPM finish is 170 working days (2027-09-02), but only 7.8% of 10,000 simulated runs finish that early.",
+    "P50 / P80 / P95 finish: 2027-10-08 / 2027-11-02 / 2027-11-24 (194.7 / 211.2 / 227.4 working days).",
+    "Recommended schedule margin is 42 working days (24.2% of the deterministic plan), committing to 2027-11-02.",
+    "Probability of meeting the 2027-09-30 target is 37.5%.",
+    "Top duration driver is T19 Wave 3 application migration (legacy) (Spearman 0.57); 4 task(s) with float in the plan are critical in >= 20% of runs, led by T14 Pilot migration (2 apps) (66%)."
+  ],
+  "change_log": "2026-11-02: health AMBER. Pipeline recommends 42 working days of schedule margin (P80 2027-11-02). Next focus: B10 Push repo and enable the weekly AI PM workflow."
+}

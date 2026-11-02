@@ -1,0 +1,736 @@
+{
+  "project": "Cloud migration program",
+  "generated_by": "riskpath 0.1.0",
+  "n_tasks": 25,
+  "settings": {
+    "start_date": "2027-01-04",
+    "target_date": "2027-09-30",
+    "holidays": [
+      "2027-01-18",
+      "2027-02-15",
+      "2027-05-31",
+      "2027-07-05",
+      "2027-09-06",
+      "2027-11-25",
+      "2027-12-24"
+    ],
+    "iterations": 10000,
+    "seed": 42,
+    "rho": 0.3,
+    "pert_lambda": 4.0,
+    "calendar": "Mon-Fri working days minus holidays",
+    "sensitivity_basis": "Spearman rank correlation on the rho = 0 run (common random numbers)"
+  },
+  "deterministic": {
+    "basis": "most-likely durations, risk events excluded",
+    "duration_days": 170.0,
+    "finish_date": "2027-09-02",
+    "critical_path": [
+      "T01",
+      "T05",
+      "T09",
+      "T10",
+      "T13",
+      "T15",
+      "T17",
+      "T19",
+      "T22",
+      "T23",
+      "T24",
+      "T25"
+    ],
+    "pert_mean_duration_days": 181.0,
+    "probability_of_meeting": 0.0783
+  },
+  "simulation": {
+    "mean_days": 195.65,
+    "std_days": 18.46,
+    "min_days": 135.65,
+    "max_days": 259.82,
+    "p5_days": 166.34,
+    "p50_days": 194.73,
+    "p80_days": 211.19,
+    "p95_days": 227.43,
+    "p50_date": "2027-10-08",
+    "p80_date": "2027-11-02",
+    "p95_date": "2027-11-24"
+  },
+  "target": {
+    "date": "2027-09-30",
+    "workdays": 189,
+    "probability": 0.3751,
+    "probability_independent": 0.2821,
+    "probability_without_risk_events": 0.6629
+  },
+  "margin": {
+    "basis": "P80 minus deterministic CPM duration",
+    "raw_days": 41.19,
+    "recommended_days": 42,
+    "pct_of_deterministic": 24.2,
+    "commit_date": "2027-11-02"
+  },
+  "merge_bias": {
+    "basis": "mean simulated finish (no risk events) minus CPM on PERT-mean durations",
+    "days": 1.48
+  },
+  "risk_events": {
+    "p80_without_risk_events_days": 196.49,
+    "p80_added_by_risk_events_days": 14.7,
+    "mean_added_by_risk_events_days": 13.18
+  },
+  "correlation": {
+    "rho": 0.3,
+    "p80_independent_days": 206.17,
+    "p80_correlated_days": 211.19,
+    "p5_p95_spread_independent_days": 39.42,
+    "p5_p95_spread_correlated_days": 61.08
+  },
+  "top_criticality": [
+    {
+      "id": "T01",
+      "name": "Program mobilization and governance",
+      "criticality_index": 1.0
+    },
+    {
+      "id": "T22",
+      "name": "Performance and DR testing",
+      "criticality_index": 1.0
+    },
+    {
+      "id": "T23",
+      "name": "Cutover rehearsal",
+      "criticality_index": 1.0
+    },
+    {
+      "id": "T24",
+      "name": "Production cutover",
+      "criticality_index": 1.0
+    },
+    {
+      "id": "T25",
+      "name": "Hypercare and handover",
+      "criticality_index": 1.0
+    }
+  ],
+  "top_drivers": [
+    {
+      "id": "T19",
+      "name": "Wave 3 application migration (legacy)",
+      "sensitivity_spearman": 0.5656
+    },
+    {
+      "id": "T10",
+      "name": "Hybrid connectivity and DNS",
+      "sensitivity_spearman": 0.4622
+    },
+    {
+      "id": "T17",
+      "name": "Wave 2 application migration",
+      "sensitivity_spearman": 0.2826
+    },
+    {
+      "id": "T15",
+      "name": "Wave 1 application migration",
+      "sensitivity_spearman": 0.2161
+    },
+    {
+      "id": "T14",
+      "name": "Pilot migration (2 apps)",
+      "sensitivity_spearman": 0.1845
+    }
+  ],
+  "near_critical_tasks": [
+    "T07",
+    "T08",
+    "T11",
+    "T14"
+  ],
+  "tasks": [
+    {
+      "id": "T01",
+      "name": "Program mobilization and governance",
+      "depends_on": [],
+      "optimistic": 5.0,
+      "most_likely": 8.0,
+      "pessimistic": 12.0,
+      "pert_mean": 8.17,
+      "risk_event_prob": 0.0,
+      "risk_event_days": 0.0,
+      "es": 0.0,
+      "ef": 8.0,
+      "total_float": 0.0,
+      "deterministic_critical": true,
+      "start_date": "2027-01-04",
+      "finish_date": "2027-01-13",
+      "criticality_index": 1.0,
+      "sensitivity_spearman": 0.0978,
+      "sensitivity_spearman_correlated": 0.4599,
+      "risk_hit_rate": 0.0
+    },
+    {
+      "id": "T02",
+      "name": "Application discovery and assessment",
+      "depends_on": [
+        "T01"
+      ],
+      "optimistic": 15.0,
+      "most_likely": 20.0,
+      "pessimistic": 35.0,
+      "pert_mean": 21.67,
+      "risk_event_prob": 0.0,
+      "risk_event_days": 0.0,
+      "es": 8.0,
+      "ef": 28.0,
+      "total_float": 9.0,
+      "deterministic_critical": false,
+      "start_date": "2027-01-14",
+      "finish_date": "2027-02-11",
+      "criticality_index": 0.0072,
+      "sensitivity_spearman": -0.0056,
+      "sensitivity_spearman_correlated": 0.4175,
+      "risk_hit_rate": 0.0
+    },
+    {
+      "id": "T03",
+      "name": "Infrastructure dependency mapping",
+      "depends_on": [
+        "T01"
+      ],
+      "optimistic": 10.0,
+      "most_likely": 15.0,
+      "pessimistic": 25.0,
+      "pert_mean": 15.83,
+      "risk_event_prob": 0.2,
+      "risk_event_days": 8.0,
+      "es": 8.0,
+      "ef": 23.0,
+      "total_float": 14.0,
+      "deterministic_critical": false,
+      "start_date": "2027-01-14",
+      "finish_date": "2027-02-04",
+      "criticality_index": 0.0026,
+      "sensitivity_spearman": -0.0025,
+      "sensitivity_spearman_correlated": 0.3001,
+      "risk_hit_rate": 0.1933
+    },
+    {
+      "id": "T04",
+      "name": "Migration strategy and wave plan",
+      "depends_on": [
+        "T02",
+        "T03"
+      ],
+      "optimistic": 8.0,
+      "most_likely": 10.0,
+      "pessimistic": 18.0,
+      "pert_mean": 11.0,
+      "risk_event_prob": 0.0,
+      "risk_event_days": 0.0,
+      "es": 28.0,
+      "ef": 38.0,
+      "total_float": 9.0,
+      "deterministic_critical": false,
+      "start_date": "2027-02-12",
+      "finish_date": "2027-02-26",
+      "criticality_index": 0.0098,
+      "sensitivity_spearman": -0.0114,
+      "sensitivity_spearman_correlated": 0.4181,
+      "risk_hit_rate": 0.0
+    },
+    {
+      "id": "T05",
+      "name": "Landing zone design",
+      "depends_on": [
+        "T01"
+      ],
+      "optimistic": 10.0,
+      "most_likely": 12.0,
+      "pessimistic": 20.0,
+      "pert_mean": 13.0,
+      "risk_event_prob": 0.0,
+      "risk_event_days": 0.0,
+      "es": 8.0,
+      "ef": 20.0,
+      "total_float": 0.0,
+      "deterministic_critical": true,
+      "start_date": "2027-01-14",
+      "finish_date": "2027-02-01",
+      "criticality_index": 0.9902,
+      "sensitivity_spearman": 0.1368,
+      "sensitivity_spearman_correlated": 0.487,
+      "risk_hit_rate": 0.0
+    },
+    {
+      "id": "T06",
+      "name": "Landing zone build (IaC, guardrails)",
+      "depends_on": [
+        "T05"
+      ],
+      "optimistic": 15.0,
+      "most_likely": 20.0,
+      "pessimistic": 30.0,
+      "pert_mean": 20.83,
+      "risk_event_prob": 0.25,
+      "risk_event_days": 10.0,
+      "es": 20.0,
+      "ef": 40.0,
+      "total_float": 5.0,
+      "deterministic_critical": false,
+      "start_date": "2027-02-02",
+      "finish_date": "2027-03-02",
+      "criticality_index": 0.1171,
+      "sensitivity_spearman": 0.0433,
+      "sensitivity_spearman_correlated": 0.296,
+      "risk_hit_rate": 0.2527
+    },
+    {
+      "id": "T07",
+      "name": "Identity federation and SSO",
+      "depends_on": [
+        "T05"
+      ],
+      "optimistic": 10.0,
+      "most_likely": 15.0,
+      "pessimistic": 25.0,
+      "pert_mean": 15.83,
+      "risk_event_prob": 0.3,
+      "risk_event_days": 10.0,
+      "es": 20.0,
+      "ef": 35.0,
+      "total_float": 2.0,
+      "deterministic_critical": false,
+      "start_date": "2027-02-02",
+      "finish_date": "2027-02-23",
+      "criticality_index": 0.286,
+      "sensitivity_spearman": 0.1452,
+      "sensitivity_spearman_correlated": 0.3322,
+      "risk_hit_rate": 0.3013
+    },
+    {
+      "id": "T08",
+      "name": "Privileged access and RBAC model",
+      "depends_on": [
+        "T07"
+      ],
+      "optimistic": 5.0,
+      "most_likely": 8.0,
+      "pessimistic": 14.0,
+      "pert_mean": 8.5,
+      "risk_event_prob": 0.0,
+      "risk_event_days": 0.0,
+      "es": 35.0,
+      "ef": 43.0,
+      "total_float": 2.0,
+      "deterministic_critical": false,
+      "start_date": "2027-02-24",
+      "finish_date": "2027-03-05",
+      "criticality_index": 0.286,
+      "sensitivity_spearman": 0.0403,
+      "sensitivity_spearman_correlated": 0.4412,
+      "risk_hit_rate": 0.0
+    },
+    {
+      "id": "T09",
+      "name": "Hub-spoke network and IP plan",
+      "depends_on": [
+        "T05"
+      ],
+      "optimistic": 8.0,
+      "most_likely": 10.0,
+      "pessimistic": 16.0,
+      "pert_mean": 10.67,
+      "risk_event_prob": 0.0,
+      "risk_event_days": 0.0,
+      "es": 20.0,
+      "ef": 30.0,
+      "total_float": 0.0,
+      "deterministic_critical": true,
+      "start_date": "2027-02-02",
+      "finish_date": "2027-02-16",
+      "criticality_index": 0.5871,
+      "sensitivity_spearman": 0.0667,
+      "sensitivity_spearman_correlated": 0.449,
+      "risk_hit_rate": 0.0
+    },
+    {
+      "id": "T10",
+      "name": "Hybrid connectivity and DNS",
+      "depends_on": [
+        "T09"
+      ],
+      "optimistic": 18.0,
+      "most_likely": 25.0,
+      "pessimistic": 45.0,
+      "pert_mean": 27.17,
+      "risk_event_prob": 0.35,
+      "risk_event_days": 15.0,
+      "es": 30.0,
+      "ef": 55.0,
+      "total_float": 0.0,
+      "deterministic_critical": true,
+      "start_date": "2027-02-17",
+      "finish_date": "2027-03-23",
+      "criticality_index": 0.5871,
+      "sensitivity_spearman": 0.4622,
+      "sensitivity_spearman_correlated": 0.5368,
+      "risk_hit_rate": 0.3575
+    },
+    {
+      "id": "T11",
+      "name": "Security and logging baseline",
+      "depends_on": [
+        "T06",
+        "T08"
+      ],
+      "optimistic": 8.0,
+      "most_likely": 12.0,
+      "pessimistic": 20.0,
+      "pert_mean": 12.67,
+      "risk_event_prob": 0.0,
+      "risk_event_days": 0.0,
+      "es": 43.0,
+      "ef": 55.0,
+      "total_float": 2.0,
+      "deterministic_critical": false,
+      "start_date": "2027-03-08",
+      "finish_date": "2027-03-23",
+      "criticality_index": 0.3831,
+      "sensitivity_spearman": 0.0729,
+      "sensitivity_spearman_correlated": 0.4607,
+      "risk_hit_rate": 0.0
+    },
+    {
+      "id": "T12",
+      "name": "Migration factory tooling and runbooks",
+      "depends_on": [
+        "T04",
+        "T06"
+      ],
+      "optimistic": 8.0,
+      "most_likely": 10.0,
+      "pessimistic": 15.0,
+      "pert_mean": 10.5,
+      "risk_event_prob": 0.0,
+      "risk_event_days": 0.0,
+      "es": 40.0,
+      "ef": 50.0,
+      "total_float": 7.0,
+      "deterministic_critical": false,
+      "start_date": "2027-03-03",
+      "finish_date": "2027-03-16",
+      "criticality_index": 0.0298,
+      "sensitivity_spearman": 0.0014,
+      "sensitivity_spearman_correlated": 0.4262,
+      "risk_hit_rate": 0.0
+    },
+    {
+      "id": "T13",
+      "name": "Data replication setup",
+      "depends_on": [
+        "T04",
+        "T10"
+      ],
+      "optimistic": 8.0,
+      "most_likely": 12.0,
+      "pessimistic": 20.0,
+      "pert_mean": 12.67,
+      "risk_event_prob": 0.0,
+      "risk_event_days": 0.0,
+      "es": 55.0,
+      "ef": 67.0,
+      "total_float": 0.0,
+      "deterministic_critical": true,
+      "start_date": "2027-03-24",
+      "finish_date": "2027-04-08",
+      "criticality_index": 0.3426,
+      "sensitivity_spearman": 0.049,
+      "sensitivity_spearman_correlated": 0.435,
+      "risk_hit_rate": 0.0
+    },
+    {
+      "id": "T14",
+      "name": "Pilot migration (2 apps)",
+      "depends_on": [
+        "T10",
+        "T11",
+        "T12"
+      ],
+      "optimistic": 8.0,
+      "most_likely": 10.0,
+      "pessimistic": 18.0,
+      "pert_mean": 11.0,
+      "risk_event_prob": 0.3,
+      "risk_event_days": 6.0,
+      "es": 55.0,
+      "ef": 65.0,
+      "total_float": 2.0,
+      "deterministic_critical": false,
+      "start_date": "2027-03-24",
+      "finish_date": "2027-04-06",
+      "criticality_index": 0.6574,
+      "sensitivity_spearman": 0.1845,
+      "sensitivity_spearman_correlated": 0.3681,
+      "risk_hit_rate": 0.2993
+    },
+    {
+      "id": "T15",
+      "name": "Wave 1 application migration",
+      "depends_on": [
+        "T13",
+        "T14"
+      ],
+      "optimistic": 15.0,
+      "most_likely": 20.0,
+      "pessimistic": 30.0,
+      "pert_mean": 20.83,
+      "risk_event_prob": 0.0,
+      "risk_event_days": 0.0,
+      "es": 67.0,
+      "ef": 87.0,
+      "total_float": 0.0,
+      "deterministic_critical": true,
+      "start_date": "2027-04-09",
+      "finish_date": "2027-05-06",
+      "criticality_index": 0.9914,
+      "sensitivity_spearman": 0.2161,
+      "sensitivity_spearman_correlated": 0.5185,
+      "risk_hit_rate": 0.0
+    },
+    {
+      "id": "T16",
+      "name": "Wave 1 data migration and validation",
+      "depends_on": [
+        "T13",
+        "T14"
+      ],
+      "optimistic": 10.0,
+      "most_likely": 14.0,
+      "pessimistic": 24.0,
+      "pert_mean": 15.0,
+      "risk_event_prob": 0.2,
+      "risk_event_days": 7.0,
+      "es": 67.0,
+      "ef": 81.0,
+      "total_float": 25.0,
+      "deterministic_critical": false,
+      "start_date": "2027-04-09",
+      "finish_date": "2027-04-28",
+      "criticality_index": 0.0086,
+      "sensitivity_spearman": 0.0124,
+      "sensitivity_spearman_correlated": 0.3177,
+      "risk_hit_rate": 0.2014
+    },
+    {
+      "id": "T17",
+      "name": "Wave 2 application migration",
+      "depends_on": [
+        "T15"
+      ],
+      "optimistic": 20.0,
+      "most_likely": 25.0,
+      "pessimistic": 40.0,
+      "pert_mean": 26.67,
+      "risk_event_prob": 0.0,
+      "risk_event_days": 0.0,
+      "es": 87.0,
+      "ef": 112.0,
+      "total_float": 0.0,
+      "deterministic_critical": true,
+      "start_date": "2027-05-07",
+      "finish_date": "2027-06-11",
+      "criticality_index": 0.973,
+      "sensitivity_spearman": 0.2826,
+      "sensitivity_spearman_correlated": 0.5576,
+      "risk_hit_rate": 0.0
+    },
+    {
+      "id": "T18",
+      "name": "Wave 2 data migration and validation",
+      "depends_on": [
+        "T15",
+        "T16"
+      ],
+      "optimistic": 12.0,
+      "most_likely": 16.0,
+      "pessimistic": 28.0,
+      "pert_mean": 17.33,
+      "risk_event_prob": 0.25,
+      "risk_event_days": 8.0,
+      "es": 87.0,
+      "ef": 103.0,
+      "total_float": 19.0,
+      "deterministic_critical": false,
+      "start_date": "2027-05-07",
+      "finish_date": "2027-05-28",
+      "criticality_index": 0.027,
+      "sensitivity_spearman": 0.0114,
+      "sensitivity_spearman_correlated": 0.2815,
+      "risk_hit_rate": 0.2513
+    },
+    {
+      "id": "T19",
+      "name": "Wave 3 application migration (legacy)",
+      "depends_on": [
+        "T17"
+      ],
+      "optimistic": 20.0,
+      "most_likely": 30.0,
+      "pessimistic": 50.0,
+      "pert_mean": 31.67,
+      "risk_event_prob": 0.3,
+      "risk_event_days": 12.0,
+      "es": 112.0,
+      "ef": 142.0,
+      "total_float": 0.0,
+      "deterministic_critical": true,
+      "start_date": "2027-06-14",
+      "finish_date": "2027-07-26",
+      "criticality_index": 0.863,
+      "sensitivity_spearman": 0.5656,
+      "sensitivity_spearman_correlated": 0.6192,
+      "risk_hit_rate": 0.3011
+    },
+    {
+      "id": "T20",
+      "name": "Wave 3 data migration (large databases)",
+      "depends_on": [
+        "T17",
+        "T18"
+      ],
+      "optimistic": 15.0,
+      "most_likely": 20.0,
+      "pessimistic": 35.0,
+      "pert_mean": 21.67,
+      "risk_event_prob": 0.3,
+      "risk_event_days": 10.0,
+      "es": 112.0,
+      "ef": 132.0,
+      "total_float": 10.0,
+      "deterministic_critical": false,
+      "start_date": "2027-06-14",
+      "finish_date": "2027-07-12",
+      "criticality_index": 0.137,
+      "sensitivity_spearman": 0.082,
+      "sensitivity_spearman_correlated": 0.2918,
+      "risk_hit_rate": 0.3083
+    },
+    {
+      "id": "T21",
+      "name": "Operations readiness and FinOps",
+      "depends_on": [
+        "T11"
+      ],
+      "optimistic": 10.0,
+      "most_likely": 15.0,
+      "pessimistic": 25.0,
+      "pert_mean": 15.83,
+      "risk_event_prob": 0.0,
+      "risk_event_days": 0.0,
+      "es": 55.0,
+      "ef": 70.0,
+      "total_float": 82.0,
+      "deterministic_critical": false,
+      "start_date": "2027-03-24",
+      "finish_date": "2027-04-13",
+      "criticality_index": 0.0,
+      "sensitivity_spearman": -0.0041,
+      "sensitivity_spearman_correlated": 0.4254,
+      "risk_hit_rate": 0.0
+    },
+    {
+      "id": "T22",
+      "name": "Performance and DR testing",
+      "depends_on": [
+        "T19",
+        "T20"
+      ],
+      "optimistic": 8.0,
+      "most_likely": 10.0,
+      "pessimistic": 18.0,
+      "pert_mean": 11.0,
+      "risk_event_prob": 0.0,
+      "risk_event_days": 0.0,
+      "es": 142.0,
+      "ef": 152.0,
+      "total_float": 0.0,
+      "deterministic_critical": true,
+      "start_date": "2027-07-27",
+      "finish_date": "2027-08-09",
+      "criticality_index": 1.0,
+      "sensitivity_spearman": 0.1276,
+      "sensitivity_spearman_correlated": 0.4819,
+      "risk_hit_rate": 0.0
+    },
+    {
+      "id": "T23",
+      "name": "Cutover rehearsal",
+      "depends_on": [
+        "T21",
+        "T22"
+      ],
+      "optimistic": 3.0,
+      "most_likely": 5.0,
+      "pessimistic": 8.0,
+      "pert_mean": 5.17,
+      "risk_event_prob": 0.2,
+      "risk_event_days": 5.0,
+      "es": 152.0,
+      "ef": 157.0,
+      "total_float": 0.0,
+      "deterministic_critical": true,
+      "start_date": "2027-08-10",
+      "finish_date": "2027-08-16",
+      "criticality_index": 1.0,
+      "sensitivity_spearman": 0.178,
+      "sensitivity_spearman_correlated": 0.3923,
+      "risk_hit_rate": 0.2007
+    },
+    {
+      "id": "T24",
+      "name": "Production cutover",
+      "depends_on": [
+        "T23"
+      ],
+      "optimistic": 2.0,
+      "most_likely": 3.0,
+      "pessimistic": 5.0,
+      "pert_mean": 3.17,
+      "risk_event_prob": 0.0,
+      "risk_event_days": 0.0,
+      "es": 157.0,
+      "ef": 160.0,
+      "total_float": 0.0,
+      "deterministic_critical": true,
+      "start_date": "2027-08-17",
+      "finish_date": "2027-08-19",
+      "criticality_index": 1.0,
+      "sensitivity_spearman": 0.0427,
+      "sensitivity_spearman_correlated": 0.4446,
+      "risk_hit_rate": 0.0
+    },
+    {
+      "id": "T25",
+      "name": "Hypercare and handover",
+      "depends_on": [
+        "T24"
+      ],
+      "optimistic": 10.0,
+      "most_likely": 10.0,
+      "pessimistic": 15.0,
+      "pert_mean": 10.83,
+      "risk_event_prob": 0.0,
+      "risk_event_days": 0.0,
+      "es": 160.0,
+      "ef": 170.0,
+      "total_float": 0.0,
+      "deterministic_critical": true,
+      "start_date": "2027-08-20",
+      "finish_date": "2027-09-02",
+      "criticality_index": 1.0,
+      "sensitivity_spearman": 0.0552,
+      "sensitivity_spearman_correlated": 0.4493,
+      "risk_hit_rate": 0.0
+    }
+  ],
+  "plan_file": "examples/plan.csv"
+}

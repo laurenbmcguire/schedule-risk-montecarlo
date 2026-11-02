@@ -1,0 +1,17 @@
+# Run configuration for `python -m riskpath run` (synthetic example).
+name: Cloud migration program
+plan: plan.csv
+start_date: '2027-01-04'
+target_date: '2027-09-30'
+holidays:
+- '2027-01-18'
+- '2027-02-15'
+- '2027-05-31'
+- '2027-07-05'
+- '2027-09-06'
+- '2027-11-25'
+- '2027-12-24'
+rho: 0.3
+iterations: 10000
+seed: 42
+pert_lambda: 4.0

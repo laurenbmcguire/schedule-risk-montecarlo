@@ -1,0 +1,223 @@
+name: Cloud migration program
+settings:
+  start_date: '2027-01-04'
+  target_date: '2027-09-30'
+  holidays:
+  - '2027-01-18'
+  - '2027-02-15'
+  - '2027-05-31'
+  - '2027-07-05'
+  - '2027-09-06'
+  - '2027-11-25'
+  - '2027-12-24'
+  rho: 0.3
+  iterations: 10000
+  seed: 42
+  pert_lambda: 4.0
+tasks:
+- id: T01
+  name: Program mobilization and governance
+  depends_on: []
+  optimistic: 5
+  most_likely: 8
+  pessimistic: 12
+- id: T02
+  name: Application discovery and assessment
+  depends_on:
+  - T01
+  optimistic: 15
+  most_likely: 20
+  pessimistic: 35
+- id: T03
+  name: Infrastructure dependency mapping
+  depends_on:
+  - T01
+  optimistic: 10
+  most_likely: 15
+  pessimistic: 25
+  risk_event_prob: 0.2
+  risk_event_days: 8
+- id: T04
+  name: Migration strategy and wave plan
+  depends_on:
+  - T02
+  - T03
+  optimistic: 8
+  most_likely: 10
+  pessimistic: 18
+- id: T05
+  name: Landing zone design
+  depends_on:
+  - T01
+  optimistic: 10
+  most_likely: 12
+  pessimistic: 20
+- id: T06
+  name: Landing zone build (IaC, guardrails)
+  depends_on:
+  - T05
+  optimistic: 15
+  most_likely: 20
+  pessimistic: 30
+  risk_event_prob: 0.25
+  risk_event_days: 10
+- id: T07
+  name: Identity federation and SSO
+  depends_on:
+  - T05
+  optimistic: 10
+  most_likely: 15
+  pessimistic: 25
+  risk_event_prob: 0.3
+  risk_event_days: 10
+- id: T08
+  name: Privileged access and RBAC model
+  depends_on:
+  - T07
+  optimistic: 5
+  most_likely: 8
+  pessimistic: 14
+- id: T09
+  name: Hub-spoke network and IP plan
+  depends_on:
+  - T05
+  optimistic: 8
+  most_likely: 10
+  pessimistic: 16
+- id: T10
+  name: Hybrid connectivity and DNS
+  depends_on:
+  - T09
+  optimistic: 18
+  most_likely: 25
+  pessimistic: 45
+  risk_event_prob: 0.35
+  risk_event_days: 15
+- id: T11
+  name: Security and logging baseline
+  depends_on:
+  - T06
+  - T08
+  optimistic: 8
+  most_likely: 12
+  pessimistic: 20
+- id: T12
+  name: Migration factory tooling and runbooks
+  depends_on:
+  - T04
+  - T06
+  optimistic: 8
+  most_likely: 10
+  pessimistic: 15
+- id: T13
+  name: Data replication setup
+  depends_on:
+  - T04
+  - T10
+  optimistic: 8
+  most_likely: 12
+  pessimistic: 20
+- id: T14
+  name: Pilot migration (2 apps)
+  depends_on:
+  - T10
+  - T11
+  - T12
+  optimistic: 8
+  most_likely: 10
+  pessimistic: 18
+  risk_event_prob: 0.3
+  risk_event_days: 6
+- id: T15
+  name: Wave 1 application migration
+  depends_on:
+  - T13
+  - T14
+  optimistic: 15
+  most_likely: 20
+  pessimistic: 30
+- id: T16
+  name: Wave 1 data migration and validation
+  depends_on:
+  - T13
+  - T14
+  optimistic: 10
+  most_likely: 14
+  pessimistic: 24
+  risk_event_prob: 0.2
+  risk_event_days: 7
+- id: T17
+  name: Wave 2 application migration
+  depends_on:
+  - T15
+  optimistic: 20
+  most_likely: 25
+  pessimistic: 40
+- id: T18
+  name: Wave 2 data migration and validation
+  depends_on:
+  - T15
+  - T16
+  optimistic: 12
+  most_likely: 16
+  pessimistic: 28
+  risk_event_prob: 0.25
+  risk_event_days: 8
+- id: T19
+  name: Wave 3 application migration (legacy)
+  depends_on:
+  - T17
+  optimistic: 20
+  most_likely: 30
+  pessimistic: 50
+  risk_event_prob: 0.3
+  risk_event_days: 12
+- id: T20
+  name: Wave 3 data migration (large databases)
+  depends_on:
+  - T17
+  - T18
+  optimistic: 15
+  most_likely: 20
+  pessimistic: 35
+  risk_event_prob: 0.3
+  risk_event_days: 10
+- id: T21
+  name: Operations readiness and FinOps
+  depends_on:
+  - T11
+  optimistic: 10
+  most_likely: 15
+  pessimistic: 25
+- id: T22
+  name: Performance and DR testing
+  depends_on:
+  - T19
+  - T20
+  optimistic: 8
+  most_likely: 10
+  pessimistic: 18
+- id: T23
+  name: Cutover rehearsal
+  depends_on:
+  - T21
+  - T22
+  optimistic: 3
+  most_likely: 5
+  pessimistic: 8
+  risk_event_prob: 0.2
+  risk_event_days: 5
+- id: T24
+  name: Production cutover
+  depends_on:
+  - T23
+  optimistic: 2
+  most_likely: 3
+  pessimistic: 5
+- id: T25
+  name: Hypercare and handover
+  depends_on:
+  - T24
+  optimistic: 10
+  most_likely: 10
+  pessimistic: 15

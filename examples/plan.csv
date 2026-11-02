@@ -1,0 +1,26 @@
+id,name,depends_on,optimistic,most_likely,pessimistic,risk_event_prob,risk_event_days
+T01,Program mobilization and governance,,5,8,12,0.0,0
+T02,Application discovery and assessment,T01,15,20,35,0.0,0
+T03,Infrastructure dependency mapping,T01,10,15,25,0.2,8
+T04,Migration strategy and wave plan,T02;T03,8,10,18,0.0,0
+T05,Landing zone design,T01,10,12,20,0.0,0
+T06,"Landing zone build (IaC, guardrails)",T05,15,20,30,0.25,10
+T07,Identity federation and SSO,T05,10,15,25,0.3,10
+T08,Privileged access and RBAC model,T07,5,8,14,0.0,0
+T09,Hub-spoke network and IP plan,T05,8,10,16,0.0,0
+T10,Hybrid connectivity and DNS,T09,18,25,45,0.35,15
+T11,Security and logging baseline,T06;T08,8,12,20,0.0,0
+T12,Migration factory tooling and runbooks,T04;T06,8,10,15,0.0,0
+T13,Data replication setup,T04;T10,8,12,20,0.0,0
+T14,Pilot migration (2 apps),T10;T11;T12,8,10,18,0.3,6
+T15,Wave 1 application migration,T13;T14,15,20,30,0.0,0
+T16,Wave 1 data migration and validation,T13;T14,10,14,24,0.2,7
+T17,Wave 2 application migration,T15,20,25,40,0.0,0
+T18,Wave 2 data migration and validation,T15;T16,12,16,28,0.25,8
+T19,Wave 3 application migration (legacy),T17,20,30,50,0.3,12
+T20,Wave 3 data migration (large databases),T17;T18,15,20,35,0.3,10
+T21,Operations readiness and FinOps,T11,10,15,25,0.0,0
+T22,Performance and DR testing,T19;T20,8,10,18,0.0,0
+T23,Cutover rehearsal,T21;T22,3,5,8,0.2,5
+T24,Production cutover,T23,2,3,5,0.0,0
+T25,Hypercare and handover,T24,10,10,15,0.0,0

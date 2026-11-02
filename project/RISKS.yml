@@ -1,0 +1,51 @@
+# Risk register for the riskpath repository. probability and impact are 1-5; score = p x i.
+risks:
+  - id: R1
+    risk: "Garbage-in estimates: three-point ranges are guessed or anchored, so precise-looking outputs rest on weak inputs"
+    probability: 4
+    impact: 4
+    owner: Lauren
+    mitigation: "Ship estimate-quality checks (B12), document how to elicit ranges, prefer ranges calibrated on actuals"
+    status: open
+  - id: R2
+    risk: "Merge bias misunderstood: stakeholders read P50 later than the CPM date as a modelling error"
+    probability: 3
+    impact: 4
+    owner: Lauren
+    mitigation: "Report shows the merge-bias gap explicitly and explains why converging paths push the mean out"
+    status: open
+  - id: R3
+    risk: "Stakeholder anchoring on the deterministic date instead of the P80 commitment"
+    probability: 4
+    impact: 3
+    owner: Lauren
+    mitigation: "Lead the report with the probability of the deterministic date and the P80 commit date"
+    status: open
+  - id: R4
+    risk: "Correlation misspecified: one global rho over- or understates spread"
+    probability: 3
+    impact: 3
+    owner: AI PM
+    mitigation: "Report rho=0 vs configured rho side by side; per-group correlation on the backlog"
+    status: open
+  - id: R5
+    risk: "False precision: 10,000 iterations read as certainty"
+    probability: 2
+    impact: 3
+    owner: AI PM
+    mitigation: "Convergence test in CI; dates reported to the whole working day"
+    status: open
+  - id: R6
+    risk: "Calendar errors (holidays, weekends) shift finish dates"
+    probability: 2
+    impact: 3
+    owner: Lauren
+    mitigation: "Working-day calendar unit tests; holidays explicit in config"
+    status: open
+  - id: R7
+    risk: "MS Project XML import grows in scope (resources, constraints, calendars)"
+    probability: 3
+    impact: 2
+    owner: Lauren
+    mitigation: "Limit M7 to tasks, durations, links and lags; defer resources"
+    status: open

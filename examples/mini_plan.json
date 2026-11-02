@@ -1,0 +1,44 @@
+{
+  "name": "Mini network",
+  "tasks": [
+    {
+      "id": "A",
+      "name": "Design",
+      "depends_on": [],
+      "optimistic": 2,
+      "most_likely": 3,
+      "pessimistic": 6
+    },
+    {
+      "id": "B",
+      "name": "Build API",
+      "depends_on": [
+        "A"
+      ],
+      "optimistic": 1,
+      "most_likely": 2,
+      "pessimistic": 4
+    },
+    {
+      "id": "C",
+      "name": "Build data layer",
+      "depends_on": [
+        "A"
+      ],
+      "optimistic": 3,
+      "most_likely": 4,
+      "pessimistic": 7
+    },
+    {
+      "id": "D",
+      "name": "Integrate and test",
+      "depends_on": [
+        "B",
+        "C"
+      ],
+      "optimistic": 1,
+      "most_likely": 1,
+      "pessimistic": 2
+    }
+  ]
+}

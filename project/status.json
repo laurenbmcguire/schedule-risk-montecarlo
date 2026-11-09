@@ -1,6 +1,6 @@
 {
   "project": "riskpath (schedule-risk-montecarlo)",
-  "date": "2026-11-03",
+  "date": "2026-11-09",
   "health": {
     "rag": "AMBER",
     "reason": "no overdue milestones or open P0 items, but open risk(s) scoring >= 15: R1 (score 16)"
@@ -283,5 +283,5 @@
     "Probability of meeting the 2027-09-30 target is 37.5%.",
     "Top duration driver is T19 Wave 3 application migration (legacy) (Spearman 0.57); 4 task(s) with float in the plan are critical in >= 20% of runs, led by T14 Pilot migration (2 apps) (66%)."
   ],
-  "change_log": "2026-11-03: health AMBER. Pipeline recommends 42 working days of schedule margin (P80 2027-11-02). Next focus: B10 Push repo and enable the weekly AI PM workflow."
+  "change_log": "2026-11-09: health AMBER. Pipeline recommends 42 working days of schedule margin (P80 2027-11-02). Next focus: B10 Push repo and enable the weekly AI PM workflow."
 }

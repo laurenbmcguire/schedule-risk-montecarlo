@@ -1,11 +1,11 @@
 {
   "project": "riskpath (schedule-risk-montecarlo)",
-  "date": "2026-11-09",
+  "date": "2026-11-16",
   "health": {
     "rag": "AMBER",
-    "reason": "no overdue milestones or open P0 items, but open risk(s) scoring >= 15: R1 (score 16)"
+    "reason": "overdue milestone(s): M5"
   },
-  "executive_summary": "Overall health is AMBER: no overdue milestones or open P0 items, but open risk(s) scoring >= 15: R1 (score 16). 4 of 8 milestones are complete. Deterministic CPM finish is 170 working days (2027-09-02), but only 7.8% of 10,000 simulated runs finish that early. Recommended schedule margin is 42 working days (24.2% of the deterministic plan), committing to 2027-11-02. The highest-scored open risk is R1 (score 16, High); mitigation: Ship estimate-quality checks (B12), document how to elicit ranges, prefer ranges calibrated on actuals. Next actions: B10 Push repo and enable the weekly AI PM workflow; B12 Estimate-quality checks on three-point ranges; B13 MSPDI (MS Project XML) task and predecessor parser.",
+  "executive_summary": "Overall health is AMBER: overdue milestone(s): M5. 4 of 8 milestones are complete. Deterministic CPM finish is 170 working days (2027-09-02), but only 7.8% of 10,000 simulated runs finish that early. Recommended schedule margin is 42 working days (24.2% of the deterministic plan), committing to 2027-11-02. The highest-scored open risk is R1 (score 16, High); mitigation: Ship estimate-quality checks (B12), document how to elicit ranges, prefer ranges calibrated on actuals. Next actions: B10 Push repo and enable the weekly AI PM workflow; B12 Estimate-quality checks on three-point ranges; B13 MSPDI (MS Project XML) task and predecessor parser.",
   "executive_summary_source": "deterministic template",
   "milestones": [
     {
@@ -80,8 +80,8 @@
       "pct_done": 33.3,
       "items_done": 1,
       "items_total": 3,
-      "overdue": false,
-      "days_overdue": 0,
+      "overdue": true,
+      "days_overdue": 3,
       "done_criteria": [
         "Deterministic STATUS.md and status.json",
         "CI on Python 3.10 and 3.12",
@@ -283,5 +283,5 @@
     "Probability of meeting the 2027-09-30 target is 37.5%.",
     "Top duration driver is T19 Wave 3 application migration (legacy) (Spearman 0.57); 4 task(s) with float in the plan are critical in >= 20% of runs, led by T14 Pilot migration (2 apps) (66%)."
   ],
-  "change_log": "2026-11-09: health AMBER. Pipeline recommends 42 working days of schedule margin (P80 2027-11-02). Next focus: B10 Push repo and enable the weekly AI PM workflow."
+  "change_log": "2026-11-16: health AMBER. Pipeline recommends 42 working days of schedule margin (P80 2027-11-02). Next focus: B10 Push repo and enable the weekly AI PM workflow."
 }
